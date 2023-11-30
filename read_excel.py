@@ -12,7 +12,7 @@ for sheet in df.sheet_names:
     #print(dfs.columns)
     if('Area Affected' and 'Number of Customers Affected' in dfs.columns):
         for index, row in dfs.iterrows():
-            if not row.isnull().values.any():
+            if not pd.isnull(row['Date']) and not pd.isnull(row['Area Affected']):
                 date_field = str(row['Date'])
                 if '/' in date_field:
                     parsed_date = datetime.strptime(date_field, date_pattern_short)
